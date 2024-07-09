@@ -1,42 +1,48 @@
 import React, { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  signInStart,
+  signInFailure,
+  signInSuccess,
+} from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
+
 const SignIn = () => {
   const [formData, setFormData] = useState({});
-  const [error,setError] = useState(null)
-  const [loading,setLoading] = useState(false)
-  const navigate = useNavigate()
+  const { loading, error } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-    setLoading(true)
-    const res = await fetch("/api/auth/signin", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    const data = await res.json();
-        console.log(data);
-        if(data.success===false){
-          setLoading(false)
-          setError(data.message);
-
-      return 
+    dispatch(signInStart());
+    try {
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (!res.ok) {
+        dispatch(signInFailure(data.message || "An error occurred"));
+        return;
+      }
+      dispatch(signInSuccess(data));
+      navigate("/");
+    } catch (error) {
+      dispatch(signInFailure(error.message || "An error occurred"));
     }
-    setLoading(false)
-    setError(null)
-    navigate('/')
-  }catch(error){
-    setLoading(false)
-    setError(error.message)
-  }
   };
 
   return (
@@ -45,28 +51,30 @@ const SignIn = () => {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <input
           type="email"
-          placeholder="email"
+          placeholder="Email"
           className="border p-3 rounded-lg"
           id="email"
           onChange={handleChange}
         />
-
         <input
           type="password"
-          placeholder="password"
+          placeholder="Password"
           className="border p-3 rounded-lg"
           id="password"
           onChange={handleChange}
         />
-
-        <button disabled={loading}className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-85">
-          {loading?'Loading...':'Sign In'}
+        <button
+          disabled={loading}
+          className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-85"
+        >
+          {loading ? "Loading..." : "Sign In"}
         </button>
+        <OAuth />
       </form>
       <div className="flex gap-2 mt-5">
-        <p>don't have a account?</p>
-        <Link to={"/sign-up"}>
-          <span className="text-blue-700">sign up</span>
+        <p>Don't have an account?</p>
+        <Link to="/sign-up">
+          <span className="text-blue-700">Sign Up</span>
         </Link>
       </div>
       {error && <p className="text-red-500 mt-5">{error}</p>}
