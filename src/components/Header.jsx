@@ -28,8 +28,9 @@ export default function Header() {
     <header className="bg-slate-200 shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <h1 className="font-bold text-sm sm:text-xl flex flex-wrap">
-          <span className="text-slate-500">hk</span>
-          <span className="text-slate-500"> Estate</span>
+          <Link to='/' >
+          <span className="text-slate-500 caret-red-100">Dream</span>
+          <span className="text-slate-500"> Estate</span></Link>
         </h1>
         <form
           onSubmit={handleSubmit}
