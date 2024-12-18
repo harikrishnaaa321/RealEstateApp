@@ -1,8 +1,12 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![about](https://github.com/user-attachments/assets/683fbb2b-3387-4472-892b-296949fefa50)
+![home](https://github.com/user-attachments/assets/36698bbc-48f8-41dd-a6ee-e63825186f80)
+![home2](https://github.com/user-attachments/assets/025ac6ac-ffe3-4199-9fb6-10931879b555)
+![myListings](https://github.com/user-attachments/assets/c4beebb7-c65b-4362-a481-40637b87c18c)
+![profile2](https://github.com/user-attachments/assets/a5895132-d5af-4c9f-949c-e50c0717f301)
+![renting](https://github.com/user-attachments/assets/da818154-5050-466e-a625-4e371907e671)
+![sample](https://github.com/user-attachments/assets/e954dec5-52d0-4575-9923-195a9863592a)
+![search](https://github.com/user-attachments/assets/0be41640-fc45-4a21-bfbc-7748cf0b0dea)
+![search2](https://github.com/user-attachments/assets/0540427e-48ce-4934-a08c-676d34dd1c87)
+![sending mail2](https://github.com/user-attachments/assets/ada22caa-cbbc-472a-b2fa-e9f658dd011d)
+![sending mail3](https://github.com/user-attachments/assets/327f734a-7db0-4b33-8813-a4b2578c19f3)
+![updateListing](https://github.com/user-attachments/assets/db64bc86-e24b-40d1-b8bc-1bb88ecd57f0)
